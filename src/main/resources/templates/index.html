@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f6fc;
+            color: #69707a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+            border-radius: 0.35rem;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #69707a;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Homepage</h1>
+        <p>Choose a page to navigate:</p>
+        <ul>
+            <li th:if="${role == 'admin'}"><a href="/admin/products">Products Management</a></li>
+            <li th:if="${role != 'admin'}"><a href="/products">Products Management</a></li>
+            <li th:if="${role == 'admin'}"><a href="/admin/employees">Employees Management</a></li>
+            <li th:if="${role != 'admin'}"><a href="/sale">Sale Management</a></li>
+            <li><a href="/profile">Profile Management</a></li>
+            <li><a href="/report">Report Management</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+    </div>
+    <div th:if="${success}">
+        <div class="alert alert-success">
+            Đăng ký thành công!
+        </div>
+    </div>
+</body>
+
+</html>
